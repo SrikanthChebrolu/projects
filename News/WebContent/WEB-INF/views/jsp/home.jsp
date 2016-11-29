@@ -1,0 +1,212 @@
+<%@page session="false"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<c:url var="home" value="/" scope="request" />
+<spring:url value="/resources/core/css/bootstrap.min.css"
+	var="bootstrapCss" />
+<spring:url value="/resources/core/css/home.css" var="coreCss" />
+<link href="${bootstrapCss}" rel="stylesheet" />
+<link href="${coreCss}" rel="stylesheet" />
+
+<spring:url value="https://code.jquery.com/jquery-1.x-git.min.js"
+	var="jqueryJs" />
+<script src="${jqueryJs}"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<spring:url
+	value="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"
+	var="angularJs"></spring:url>
+
+<script src="${angularJs}"></script>
+
+<spring:url value="/resources/core/js/home.js" var="coreJs" />
+<spring:url value="/resources/core/js/bootstrap.min.js"
+	var="bootstrapJs" />
+
+<script src="${coreJs}"></script>
+<script src="${bootstrapJs}"></script>
+</head>
+<body>
+	<div class="container-fluid outerdiv" ng-app="myApp"
+		ng-controller="NewsController">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/News"><b>ASK-Sahayak</b> <span
+						class="span-style">News</span></a>
+				</div>
+			</div>
+		</nav>
+
+		<noscript>
+			<div class="nojs">Javascript is either disabled or not
+				supported in your browser. Please enable it or use a Javascript
+				enabled browser.</div>
+		</noscript>
+
+		<div class="animated zoomInRight">
+			<div class="input-group search-bar">
+				<%-- <input type="text" ng-model="search"
+					ng-model-options="{ debounce: 800 }" onclick="select()"
+					class="form-control" placeholder="Enter full movie name" autofocus />--%>
+				<select ng-model="selectedname" ng-model-options="{ debounce: 800 }"  class="form-control" placeholder="Enter full movie name" ng-change="change()" autofocus
+					>
+					<option value="abc-news-au">ABC NEWS AU</option>
+					<option value="ars-technica">ARS TECHNICA</option>
+					<option value="associated-press">ASSOCIATED PRESS</option>
+					<option value="bbc-news">BBC NEWS</option>
+					<option value="bbc-sport">BBC SPORT</option>
+					<option value="ars-technica">BILD</option>
+					<option value="bloomberg">BLOOMBERG</option>
+					<option value="business-insider">BUSINESS INSIDER</option>
+					<option value="business-insider-uk">BUSINESS INSIDER UK</option>
+					<option value="buzzfeed">BUZZFEED</option>
+					<option value="cnbc">CNBC</option>
+					<option value="cnn">CNN</option>
+					<option value="daily-mail">DAILY MAIL</option>
+					<option value="der-tagesspiegel">DER TAGESSPIEGEL</option>
+					<option value="die-zeit">DIE ZEIT</option>
+					<option value="engadget">ENGADGET</option>
+					<option value="entertainment-weekly">ENTERTAINMENT WEEKLY</option>
+					<option value="espn">ESPN</option>
+					<option value="espn-cric-info">ESPN CRIC INFO</option>
+					<option value="focus">FOCUS</option>
+					<option value="football-italia">football italia</option>
+					<option value="fortune">fortune</option>
+					<option value="four-four-two">FOUR FOUR TWO</option>
+					<option value="fox-sports">FOX SPORTS</option>
+					<option value="google-news">GOOGLE NEWS</option>
+					<option value="gruenderszene">GRUENDERSZENE</option>
+					<option value="hacker-news">HACKER NEWS</option>
+					<option value="handelsblatt">HANDELSBLATT</option>
+					<option value="ign">IGN</option>
+					<option value="independent">INDEPENDENT</option>
+					<option value="mashable">MASHABLE</option>
+					<option value="metro">METRO</option>
+					<option value="mirror">MIRROR</option>
+					<option value="mtv-news">MTV NEWS</option>
+					<option value="mtv-news-uk">MTV NEWS UK</option>
+					<option value="national-geographic">NATIONAL GEOGRAPHIC</option>
+					<option value="new-scientist">NEW SCIENTIST</option>
+					<option value="newsweek">NEWSWEEK</option>
+					<option value="new-york-magazine">NEW YORK MAGAZINE</option>
+					<option value="nfl-news">NFL NEWS</option>
+					<option value="polygon">POLYGON</option>
+					<option value="recode">RECODE</option>
+					<option value="reddit-r-all">REDDIT R ALL</option>
+					<option value="reuters">REUTERS</option>
+					<option value="sky-news">SKY NEWS</option>
+					<option value="sky-sports-news">SKY SPORTS NEWS</option>
+					<option value="spiegel-online">SPIEGEL ONLINE</option>
+					<option value="t3n">T3N</option>
+					<option value="talksport">TALKSPORT</option>
+					<option value="techcrunch">TECHCRUNCH</option>
+					<option value="the-economist">THE ECONOMIST</option>
+					<option value="the-guardian-au">THE GUARDIAN AU</option>
+					<option value="the-guardian-uk">THE GUARDIAN UK</option>
+					<option value="the-hindu">THE HINDU</option>
+					<option value="the-huffington-post">THE HUFFINGTON POST</option>
+					<option value="the-lad-bible">THE LAD BIBLE</option>
+					<option value="the-new-york-times">THE NEW YORK TIMES</option>
+					<option value="the-next-web">THE NEXT WEB</option>
+					<option value="the-sport-bible">THE SPORT BIBLE</option>
+					<option value="the-telegraph">THE TELEGRAPH</option>
+					<option value="the-times-of-india">THE TIMES OF INDIA</option>
+					<option value="the-verge">THE VERGE</option>
+					<option value="the-wall-street-journal">THE WALL STREET
+						JOURNAL</option>
+					<option value="the-washington-post">THE WASHINGTON POST</option>
+					<option value="time">TIME</option>
+					<option value="usa-today">USA TODAY</option>
+					<option value="wired-de">WIRED DE</option>
+					<option value="wirtschafts-woche">WIRTSCHAFTS WOCHE</option>
+				</select>
+
+				<%-- <span class="input-group-addon bar-style"><i
+					class="glyphicon glyphicon-search"></i></span>--%>
+			</div>
+
+			<div id="main-info" class="col-md-8">
+				<div ng-if="!details">Loading {{selectedname}} news...</div>
+
+				<div ng-if="details.Response==='True'">
+					<img
+						ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"
+						class="thumbnail animated flip movie-poster"> <span
+						class="span-outer"> <a
+						href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{
+							details.Title }}</a>
+					</span>, {{ details.Year }}
+
+					<p>
+						<strong>Released on:</strong> {{ details.Released }} ({{
+						details.Runtime }})
+					</p>
+
+					<p>{{ details.Plot }}</p>
+
+					<p class="outer-p">
+					<div class="inner-p">
+						<span class="label label-primary">Directors :</span> {{
+						details.Director }}
+					</div>
+					<div class="inner-p">
+						<span class="label label-primary">Actors :</span> {{
+						details.Actors }}
+					</div>
+					<div class="inner-p">
+						<span class="label label-primary">Genre :</span> {{ details.Genre
+						}}
+					</div>
+					</p>
+
+					<p class="outer-p-2">
+						Ratings: <br> <strong>IMDb Rating</strong>: <span
+							class="label label-success">{{ details.imdbRating }}</span> <br>
+						<strong>Rotten Tomatoes</strong>: <span
+							class="label label-success">{{ details.tomatoRating }}</span>
+					</p>
+
+					<p class="outer-p-3">
+						<a
+							ng-href="https://www.youtube.com/results?search_query={{ details.Title }}"
+							target="_blank" class="btn btn-default btn-xs btn-info">Watch
+							Trailers!</a> <span class="divider"></span> <a
+							ng-href="http://subscene.com/subtitles/title?q={{ details.Title }}"
+							target="_blank" class="btn btn-default btn-xs btn-info">Get
+							Subtitles!</a> <span class="divider"></span> <a
+							ng-href="http://www.theost.com/search/custom/?key={{ details.Title }}"
+							target="_blank" class="btn btn-default btn-xs btn-info">Hear
+							Soundtracks!</a> <span class="divider"></span> <a
+							ng-href="http://www.amazon.in/s/ref=nb_sb_noss_1?url=search-alias%3Ddvd&field-keywords={{ details.Title }}"
+							target="_blank" class="btn btn-default btn-xs btn-info">Buy
+							this movie!</a>
+					</p>
+				</div>
+
+				<div ng-if="details.Response==='False'">No results found.</div>
+			</div>
+
+			<div id="related-results"
+				class="col-md-4 animated bounce related-results">
+				<div ng-if="related.Response!=='False'">
+					Related Results:
+					<hr>
+
+					<ul class="rel-results">
+						<li ng-repeat="movie in related.Search"><a href="#"
+							id="{{ $index + 1 }}" ng-click="update(source)">{{
+								movie.Title }}</a>, {{ movie.Year }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
