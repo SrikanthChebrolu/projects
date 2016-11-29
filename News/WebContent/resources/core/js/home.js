@@ -13,16 +13,14 @@ angular.module('myApp', [])
     
     function fetch() {
       $http.post("http://localhost:8080/News/news?source=" + $scope.selectedname)
-        .then(function(response) {
-          $scope.details = response.data;
+        .success(function(data){
+            $scope.articles = [];
+            angular.forEach(data.articles, function(value, key) {
+                $scope.articles.push(value);
+            });
+            $scope.isVisible = function(author){
+                return true;// return false to hide this artist's albums
+            };
         });
-    }
-
-    $scope.update = function(source) {
-      $scope.search = source.Title;
-    };
-
-    $scope.select = function() {
-      this.setSelectionRange(0, this.value.length);
     }
   });

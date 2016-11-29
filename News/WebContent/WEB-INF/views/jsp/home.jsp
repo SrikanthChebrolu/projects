@@ -30,9 +30,8 @@
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
 </head>
-<body>
-	<div class="container-fluid outerdiv" ng-app="myApp"
-		ng-controller="NewsController">
+<body ng-app="myApp">
+	<div class="container-fluid outerdiv" ng-controller="NewsController">
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -54,8 +53,9 @@
 				<%-- <input type="text" ng-model="search"
 					ng-model-options="{ debounce: 800 }" onclick="select()"
 					class="form-control" placeholder="Enter full movie name" autofocus />--%>
-				<select ng-model="selectedname" ng-model-options="{ debounce: 800 }"  class="form-control" placeholder="Enter full movie name" ng-change="change()" autofocus
-					>
+				<select ng-model="selectedname" ng-model-options="{ debounce: 800 }"
+					class="form-control" placeholder="Enter full movie name"
+					ng-change="change()" autofocus>
 					<option value="abc-news-au">ABC NEWS AU</option>
 					<option value="ars-technica">ARS TECHNICA</option>
 					<option value="associated-press">ASSOCIATED PRESS</option>
@@ -130,83 +130,39 @@
 				<%-- <span class="input-group-addon bar-style"><i
 					class="glyphicon glyphicon-search"></i></span>--%>
 			</div>
+		</div>
+		<%-- <div id="main-info" class="col-md-12">
+			<div class="col-md-4" ng-repeat="x in articles">
+				<div>{{ x.author }}</div>
+				<div>{{x.title}}</div>
+				<div>{{x.description}}</div>
+				<div>{{ x.url }}</div>
+				<img src={{x.urlToImage}} alt="Description" />
 
-			<div id="main-info" class="col-md-8">
-				<div ng-if="!details">Loading {{selectedname}} news...</div>
-
-				<div ng-if="details.Response==='True'">
-					<img
-						ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"
-						class="thumbnail animated flip movie-poster"> <span
-						class="span-outer"> <a
-						href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{
-							details.Title }}</a>
-					</span>, {{ details.Year }}
-
-					<p>
-						<strong>Released on:</strong> {{ details.Released }} ({{
-						details.Runtime }})
-					</p>
-
-					<p>{{ details.Plot }}</p>
-
-					<p class="outer-p">
-					<div class="inner-p">
-						<span class="label label-primary">Directors :</span> {{
-						details.Director }}
-					</div>
-					<div class="inner-p">
-						<span class="label label-primary">Actors :</span> {{
-						details.Actors }}
-					</div>
-					<div class="inner-p">
-						<span class="label label-primary">Genre :</span> {{ details.Genre
-						}}
-					</div>
-					</p>
-
-					<p class="outer-p-2">
-						Ratings: <br> <strong>IMDb Rating</strong>: <span
-							class="label label-success">{{ details.imdbRating }}</span> <br>
-						<strong>Rotten Tomatoes</strong>: <span
-							class="label label-success">{{ details.tomatoRating }}</span>
-					</p>
-
-					<p class="outer-p-3">
-						<a
-							ng-href="https://www.youtube.com/results?search_query={{ details.Title }}"
-							target="_blank" class="btn btn-default btn-xs btn-info">Watch
-							Trailers!</a> <span class="divider"></span> <a
-							ng-href="http://subscene.com/subtitles/title?q={{ details.Title }}"
-							target="_blank" class="btn btn-default btn-xs btn-info">Get
-							Subtitles!</a> <span class="divider"></span> <a
-							ng-href="http://www.theost.com/search/custom/?key={{ details.Title }}"
-							target="_blank" class="btn btn-default btn-xs btn-info">Hear
-							Soundtracks!</a> <span class="divider"></span> <a
-							ng-href="http://www.amazon.in/s/ref=nb_sb_noss_1?url=search-alias%3Ddvd&field-keywords={{ details.Title }}"
-							target="_blank" class="btn btn-default btn-xs btn-info">Buy
-							this movie!</a>
-					</p>
-				</div>
-
-				<div ng-if="details.Response==='False'">No results found.</div>
+				<div>{{ x.publishedAt }}</div>
+				<div>{{ x.additionalProperties }}</div>
 			</div>
-
-			<div id="related-results"
-				class="col-md-4 animated bounce related-results">
-				<div ng-if="related.Response!=='False'">
-					Related Results:
-					<hr>
-
-					<ul class="rel-results">
-						<li ng-repeat="movie in related.Search"><a href="#"
-							id="{{ $index + 1 }}" ng-click="update(source)">{{
-								movie.Title }}</a>, {{ movie.Year }}</li>
-					</ul>
+		</div> --%>
+		<div class="col-md-12">
+			<div class="col-md-6" ng-repeat="x in articles">
+				<img href="{{ x.url }}" ng-src="{{x.urlToImage}}"
+					class="thumbnail animated flip movie-poster"> <span
+					class="span-outer"> <a href="{{ x.url }}" target="_blank">{{x.title}}</a>
+				</span>
+				<p class="outer-p">
+				<div class="inner-p">
+					<span class="label label-primary">Author :</span> {{x.author}}
 				</div>
+				<div class="inner-p">
+					<span class="label label-primary">Published At :</span> {{
+					x.publishedAt}}
+				</div>
+				<div class="inner-p">
+					<span class="label label-primary">Description :</span> {{x.description}}
+				</div>
+				</p>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
