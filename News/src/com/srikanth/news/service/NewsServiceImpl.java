@@ -5,14 +5,13 @@ package com.srikanth.news.service;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.srikanth.news.model.News;
+import com.srikanth.news.model.Source;
 import com.srikanth.news.model.Sources;
 import com.srikanth.news.model.URLBuilder;
 
@@ -21,7 +20,8 @@ import com.srikanth.news.model.URLBuilder;
  */
 @Service
 public class NewsServiceImpl implements NewsService {
-	private static final String API_Key = "8a15eb9c99e2431696683094cb23ee8d";
+	private static final String API_KEY = "8a15eb9c99e2431696683094cb23ee8d";
+	private static final String SOURCES_URL = "https://newsapi.org/v1/sources?language=en";
 
 	public News getNewsFromSource(String s) throws URISyntaxException,
 			MalformedURLException {
@@ -33,7 +33,7 @@ public class NewsServiceImpl implements NewsService {
 		urlb.addSubfolder("articles");
 		urlb.addParameter("source", s);
 		urlb.addParameter("sortBy", "top");
-		urlb.addParameter("apiKey", API_Key);
+		urlb.addParameter("apiKey", API_KEY);
 		String url = urlb.getURL();
 		System.out.println(url);
 
@@ -45,7 +45,10 @@ public class NewsServiceImpl implements NewsService {
 		return result;
 	}
 	
-	public List<Sources> getAllSources() {
-		return new ArrayList<Sources>(EnumSet.allOf(Sources.class));
+	public Source getAllSources() {
+		RestTemplate restTemplate = new RestTemplate();
+		Source result = restTemplate.getForObject(SOURCES_URL, Source.class);
+		System.out.println("news result :" + result);
+		return result;	
 	}
 }

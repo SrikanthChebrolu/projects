@@ -8,6 +8,9 @@ package com.srikanth.news.newsconstants;
  *   Nov 28, 2016
  */
 public class NewsConstants {
+	
+	public static final String API_KEY = "8a15eb9c99e2431696683094cb23ee8d";
+	
 	public static final String ABC_NEWS_AU = "abc-news-au";
 	public static final String ARS_TECHNICA = "ars-technica";
 	public static final String ASSOCIATED_PRESS = "associated-press";

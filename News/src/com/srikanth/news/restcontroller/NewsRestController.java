@@ -10,13 +10,13 @@ import java.util.List;
 import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.srikanth.news.model.News;
+import com.srikanth.news.model.Source;
 import com.srikanth.news.model.Sources;
 import com.srikanth.news.service.NewsService;
 
@@ -34,7 +34,7 @@ public class NewsRestController {
 	 * This Controller gets the data from the backend and return the list of
 	 * news
 	 */
-	@PostMapping(value = "/news")
+	@PostMapping(value = "/newsList")
 	public String getAllNews(@QueryParam("source") String source)
 			throws URISyntaxException, MalformedURLException {
 		System.out.println(" source " + source);
@@ -48,9 +48,13 @@ public class NewsRestController {
 	}
 	
 	@GetMapping(value = "/sources")
-	public List<Sources> getAllSources() {
-		List<Sources> sources = newsService.getAllSources();
+	public String getAllSources() {
+		Source sources = newsService.getAllSources();
 		System.out.println("sources" +  sources);
-		return sources;
+		Gson gson = new Gson();
+		// 2. Java object to JSON, and assign to a String
+		String jsonInString = gson.toJson(sources);
+		System.out.println(jsonInString);
+		return jsonInString;
 	}
 }

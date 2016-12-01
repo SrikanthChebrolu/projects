@@ -8,17 +8,23 @@
 <spring:url value="/resources/core/css/bootstrap.min.css"
 	var="bootstrapCss" />
 <spring:url value="/resources/core/css/home.css" var="coreCss" />
+<spring:url value="/resources/core/css/bootstrap-theme.css"
+	var="bootstrapThemeCss" />
+<link href="${bootstrapThemeCss}" rel="stylesheet" />
 <link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${coreCss}" rel="stylesheet" />
 
-<spring:url value="https://code.jquery.com/jquery-1.x-git.min.js"
+<spring:url value="/resources/core/css/custom.css" var="customCss" />
+<link href="${customCss}" rel="stylesheet" />
+
+<spring:url value="/resources/core/js/jquery/jquery-1.x-git.min.js"
 	var="jqueryJs" />
 <script src="${jqueryJs}"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<spring:url
-	value="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"
+<spring:url value="/resources/core/js/jquery/1.11.2/jquery.min.js"
+	var="jqueryJs1" />
+<script src="${jqueryJs1}"></script>
+<spring:url value="/resources/core/js/angularjs/1.5.9/angular.min.js"
 	var="angularJs"></spring:url>
 
 <script src="${angularJs}"></script>
@@ -26,6 +32,8 @@
 <spring:url value="/resources/core/js/home.js" var="coreJs" />
 <spring:url value="/resources/core/js/bootstrap.min.js"
 	var="bootstrapJs" />
+
+
 
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
@@ -36,8 +44,17 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/News"><b>ASK-Sahayak</b> <span
-						class="span-style">News</span></a>
+					<a class="navbar-brand" href="/News"><b>SRIKANTH NEWS</b> <span
+						class="span-style"></span></a>
+					<ul class="nav navbar-nav">
+						<li class="nav-item active"><a class="nav-link" href="/News"><b>Home</b>
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="/News/news"><b>News</b></a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="/News/weather"><b>Weather</b></a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -48,120 +65,111 @@
 				enabled browser.</div>
 		</noscript>
 
-		<div class="animated zoomInRight">
-			<div class="input-group search-bar">
-				<%-- <input type="text" ng-model="search"
-					ng-model-options="{ debounce: 800 }" onclick="select()"
-					class="form-control" placeholder="Enter full movie name" autofocus />--%>
-				<select ng-model="selectedname" ng-model-options="{ debounce: 800 }"
-					class="form-control" placeholder="Enter full movie name"
-					ng-change="change()" autofocus>
-					<option value="abc-news-au">ABC NEWS AU</option>
-					<option value="ars-technica">ARS TECHNICA</option>
-					<option value="associated-press">ASSOCIATED PRESS</option>
-					<option value="bbc-news">BBC NEWS</option>
-					<option value="bbc-sport">BBC SPORT</option>
-					<option value="ars-technica">BILD</option>
-					<option value="bloomberg">BLOOMBERG</option>
-					<option value="business-insider">BUSINESS INSIDER</option>
-					<option value="business-insider-uk">BUSINESS INSIDER UK</option>
-					<option value="buzzfeed">BUZZFEED</option>
-					<option value="cnbc">CNBC</option>
-					<option value="cnn">CNN</option>
-					<option value="daily-mail">DAILY MAIL</option>
-					<option value="der-tagesspiegel">DER TAGESSPIEGEL</option>
-					<option value="die-zeit">DIE ZEIT</option>
-					<option value="engadget">ENGADGET</option>
-					<option value="entertainment-weekly">ENTERTAINMENT WEEKLY</option>
-					<option value="espn">ESPN</option>
-					<option value="espn-cric-info">ESPN CRIC INFO</option>
-					<option value="focus">FOCUS</option>
-					<option value="football-italia">football italia</option>
-					<option value="fortune">fortune</option>
-					<option value="four-four-two">FOUR FOUR TWO</option>
-					<option value="fox-sports">FOX SPORTS</option>
-					<option value="google-news">GOOGLE NEWS</option>
-					<option value="gruenderszene">GRUENDERSZENE</option>
-					<option value="hacker-news">HACKER NEWS</option>
-					<option value="handelsblatt">HANDELSBLATT</option>
-					<option value="ign">IGN</option>
-					<option value="independent">INDEPENDENT</option>
-					<option value="mashable">MASHABLE</option>
-					<option value="metro">METRO</option>
-					<option value="mirror">MIRROR</option>
-					<option value="mtv-news">MTV NEWS</option>
-					<option value="mtv-news-uk">MTV NEWS UK</option>
-					<option value="national-geographic">NATIONAL GEOGRAPHIC</option>
-					<option value="new-scientist">NEW SCIENTIST</option>
-					<option value="newsweek">NEWSWEEK</option>
-					<option value="new-york-magazine">NEW YORK MAGAZINE</option>
-					<option value="nfl-news">NFL NEWS</option>
-					<option value="polygon">POLYGON</option>
-					<option value="recode">RECODE</option>
-					<option value="reddit-r-all">REDDIT R ALL</option>
-					<option value="reuters">REUTERS</option>
-					<option value="sky-news">SKY NEWS</option>
-					<option value="sky-sports-news">SKY SPORTS NEWS</option>
-					<option value="spiegel-online">SPIEGEL ONLINE</option>
-					<option value="t3n">T3N</option>
-					<option value="talksport">TALKSPORT</option>
-					<option value="techcrunch">TECHCRUNCH</option>
-					<option value="the-economist">THE ECONOMIST</option>
-					<option value="the-guardian-au">THE GUARDIAN AU</option>
-					<option value="the-guardian-uk">THE GUARDIAN UK</option>
-					<option value="the-hindu">THE HINDU</option>
-					<option value="the-huffington-post">THE HUFFINGTON POST</option>
-					<option value="the-lad-bible">THE LAD BIBLE</option>
-					<option value="the-new-york-times">THE NEW YORK TIMES</option>
-					<option value="the-next-web">THE NEXT WEB</option>
-					<option value="the-sport-bible">THE SPORT BIBLE</option>
-					<option value="the-telegraph">THE TELEGRAPH</option>
-					<option value="the-times-of-india">THE TIMES OF INDIA</option>
-					<option value="the-verge">THE VERGE</option>
-					<option value="the-wall-street-journal">THE WALL STREET
-						JOURNAL</option>
-					<option value="the-washington-post">THE WASHINGTON POST</option>
-					<option value="time">TIME</option>
-					<option value="usa-today">USA TODAY</option>
-					<option value="wired-de">WIRED DE</option>
-					<option value="wirtschafts-woche">WIRTSCHAFTS WOCHE</option>
-				</select>
+		<div id="carousel-example-generic" class="carousel slide"
+			data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0"
+					class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
 
-				<%-- <span class="input-group-addon bar-style"><i
-					class="glyphicon glyphicon-search"></i></span>--%>
-			</div>
-		</div>
-		<%-- <div id="main-info" class="col-md-12">
-			<div class="col-md-4" ng-repeat="x in articles">
-				<div>{{ x.author }}</div>
-				<div>{{x.title}}</div>
-				<div>{{x.description}}</div>
-				<div>{{ x.url }}</div>
-				<img src={{x.urlToImage}} alt="Description" />
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="" alt=""
+						style="width: 304px; height: 200px;">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-3">
+								<h1 class="mbr-section-title display-1">SRIKANTH NEWS</h1>
+								<p class="mbr-section-lead lead">Get the live news from almost 60 different Sources</p>
 
-				<div>{{ x.publishedAt }}</div>
-				<div>{{ x.additionalProperties }}</div>
+								<div class="mbr-section-btn">
+									<a class="btn btn-lg btn-danger"
+										href="http://localhost:8080/News/news">
+										News</a> <a class="btn btn-lg btn-info"
+										href="http://localhost:8080/News/weather">Weather</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<img src="" alt=""
+						style="width: 304px; height: 200px;">
+					<div class="carousel-caption">
+						<h3>News</h3>
+					</div>
+				</div>
+				<div class="item">
+					<img src="" alt=""
+						style="width: 304px; height: 200px;">
+					<div class="container-slide container">
+
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2">
+								<h1 class="mbr-section-title display-1">MOBILE BOOTSTRAP
+									CAROUSEL</h1>
+								<p class="mbr-section-lead lead">Create a responsive,
+									touch-swipe carousel that looks amazing on any devices and
+									browsers. Add images, text, buttons to slides, set autoplay,
+									full-screen, full-width or boxed layout.</p>
+
+								<div class="mbr-section-btn">
+									<a class="btn btn-lg btn-danger"
+										href="http://localhost:8080/News/news">
+										News</a> <a class="btn btn-lg btn-info"
+										href="http://localhost:8080/News/weather">Weather</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<img src="" alt=""
+						style="width: 304px; height: 200px;">
+					<div class="carousel-caption">
+						<h3>Weather</h3>
+					</div>
+				</div>
+				<div class="item">
+					<img src="" alt=""
+						style="width: 304px; height: 200px;">
+					<div class="container-slide container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2">
+								<h1 class="mbr-section-title display-1">MOBILE BOOTSTRAP
+									CAROUSEL</h1>
+								<p class="mbr-section-lead lead">Create a responsive,
+									touch-swipe carousel that looks amazing on any devices and
+									browsers. Add images, text, buttons to slides, set autoplay,
+									full-screen, full-width or boxed layout.</p>
+
+								<div class="mbr-section-btn">
+									<a class="btn btn-lg btn-danger"
+										href="http://localhost:8080/News/news">
+										News</a> <a class="btn btn-lg btn-info"
+										href="http://localhost:8080/News/weather">Weather</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<img src="" alt=""
+						style="width: 304px; height: 200px;">
+					<div class="carousel-caption">
+						<h3>News</h3>
+					</div>
+				</div>
 			</div>
-		</div> --%>
-		<div class="col-md-12">
-			<div class="col-md-6" ng-repeat="x in articles">
-				<img href="{{ x.url }}" ng-src="{{x.urlToImage}}"
-					class="thumbnail animated flip movie-poster"> <span
-					class="span-outer"> <a href="{{ x.url }}" target="_blank">{{x.title}}</a>
-				</span>
-				<p class="outer-p">
-				<div class="inner-p">
-					<span class="label label-primary">Author :</span> {{x.author}}
-				</div>
-				<div class="inner-p">
-					<span class="label label-primary">Published At :</span> {{
-					x.publishedAt}}
-				</div>
-				<div class="inner-p">
-					<span class="label label-primary">Description :</span> {{x.description}}
-				</div>
-				</p>
-			</div>
+
+			<!-- Controls -->
+			<a data-app-prevent-settings class="left carousel-control" href="#carousel-example-generic"
+				role="button" data-slide="prev"> <span
+				class="icon-prev" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a> <a  data-app-prevent-settings class="right carousel-control" href="#carousel-example-generic"
+				role="button" data-slide="next"> <span
+				class="icon-next" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
 		</div>
 	</div>
 </body>

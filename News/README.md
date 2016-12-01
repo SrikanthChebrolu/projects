@@ -11,3 +11,7 @@ http://www.jsonschema2pojo.org/
 http://stackoverflow.com/questions/19538431/is-there-a-right-way-to-build-a-url
 
 http://www.mkyong.com/spring-mvc/spring-4-mvc-ajax-hello-world-example/
+
+http://www.layoutit.com/
+
+http://openweathermap.org/city
