@@ -5,14 +5,12 @@ package com.srikanth.news.service;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.srikanth.news.model.News;
 import com.srikanth.news.model.Source;
-import com.srikanth.news.model.Sources;
 import com.srikanth.news.model.URLBuilder;
 
 /**
@@ -37,8 +35,6 @@ public class NewsServiceImpl implements NewsService {
 		String url = urlb.getURL();
 		System.out.println(url);
 
-		// String uri =
-		// "https://newsapi.org/v1/articles?source=abc-news-au&sortBy=top&apiKey=8a15eb9c99e2431696683094cb23ee8d";
 		RestTemplate restTemplate = new RestTemplate();
 		News result = restTemplate.getForObject(url, News.class);
 		System.out.println("news result :" + result);
