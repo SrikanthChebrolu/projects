@@ -5,7 +5,6 @@ package com.srikanth.news.restcontroller;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import javax.ws.rs.QueryParam;
 
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.srikanth.news.model.News;
 import com.srikanth.news.model.Source;
-import com.srikanth.news.model.Sources;
 import com.srikanth.news.service.NewsService;
 
 /**

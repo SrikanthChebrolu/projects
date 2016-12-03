@@ -22,8 +22,8 @@ public class WebController {
 		return "news";
 	}
 	
-	@GetMapping(value = "/weather")
+	@GetMapping(value = "/newsSources")
 	public String weather() {
-		return "weather";
+		return "newsSources";
 	}
 }
