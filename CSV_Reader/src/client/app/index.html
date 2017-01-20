@@ -5,6 +5,7 @@
 <link href="/resources/core/css/bootstrap.min.css" rel="stylesheet" />
 <link href="/resources/core/css/home.css" rel="stylesheet" />
 <link href="/resources/core/css/custom.css" rel="stylesheet" />
+<link href="/css/main.css" rel="stylesheet" />
 <script src="/resources/core/js/jquery/jquery-1.x-git.min.js"></script>
 <script src="/resources/core/js/jquery/1.11.2/jquery.min.js"></script>
 <script src="/resources/core/js/angularjs/1.5.9/angular.min.js"></script>
@@ -27,7 +28,10 @@
         </div>
       </div>
     </nav>
-    </div>
+    <label class="btn btn-primary" for="my-file-selector">
+      <input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">Upload a CSV file
+    </label>
+    <span class='label label-info' id="upload-file-info"></span>
   </div>
 </body>
 </html>
