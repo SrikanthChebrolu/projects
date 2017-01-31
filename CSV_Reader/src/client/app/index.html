@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="/resources/core/css/bootstrap-theme.css" rel="stylesheet" />
-<link href="/resources/core/css/bootstrap.min.css" rel="stylesheet" />
-<link href="/resources/core/css/home.css" rel="stylesheet" />
-<link href="/resources/core/css/custom.css" rel="stylesheet" />
-<link href="/css/main.css" rel="stylesheet" />
-<script src="/resources/core/js/jquery/jquery-1.x-git.min.js"></script>
-<script src="/resources/core/js/jquery/1.11.2/jquery.min.js"></script>
-<script src="/resources/core/js/angularjs/1.5.9/angular.min.js"></script>
-<script src="/resources/core/js/home.js"></script>
-<script src="/resources/core/js/bootstrap.min.js"></script>
+    <link href="/resources/core/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/resources/core/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/resources/core/css/home.css" rel="stylesheet" />
+    <link href="/resources/core/css/custom.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <script src="/resources/core/js/jquery/jquery-1.x-git.min.js"></script>
+    <script src="/resources/core/js/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/resources/core/js/angularjs/1.5.9/angular.min.js"></script>
+    <script src="/resources/core/js/home.js"></script>
+    <script src="/resources/core/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
 </head>
-<body ng-app="myApp">
-  <div class="container-fluid outerdiv" ng-controller="CSVController">
+<body>
+<div class="container-fluid outerdiv" >
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href=""><b>CSV Reader</b> <span
-            class="span-style"></span></a>
-          <ul class="nav navbar-nav">
-            <li class="nav-item"><a class="nav-link" href=""><b>CSV Home</b></a>
-            <span class="sr-only">(current)</span></a></li>
-          </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href=""><b>CSV Reader</b> <span
+                        class="span-style"></span></a>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href=""><b>CSV Home</b></a>
+                        <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript">
-$(function () {
-    $("#upload").bind("click", function () {
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
-        if (regex.test($("#fileUpload").val().toLowerCase())) {
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var table = $("<table />");
-                    var rows = e.target.result.split("\n");
-                    for (var i = 0; i < rows.length; i++) {
-                        var row = $("<tr />");
-                        var cells = rows[i].split(",");
-                        for (var j = 0; j < cells.length; j++) {
-                            var cell = $("<td />");
-                            cell.html(cells[j]);
-                            row.append(cell);
-                        }
-                        table.append(row);
-                    }
-                    $("#dvCSV").html('');
-                    $("#dvCSV").append(table);
-                }
-                reader.readAsText($("#fileUpload")[0].files[0]);
-            } else {
-                alert("This browser does not support HTML5.");
-            }
-        } else {
-            alert("Please upload a valid CSV file.");
-        }
-    });
-});
-</script>
 
-<div class="jumbotron">
-  <h4 class="display-3">CSV Reader and display on HTML</h4>
-  <p1><input type="file" id="fileUpload" /></p1>
-  <p2 class="lead"><input  class="btn btn-primary btn-sm" type="button" id="upload" value="Upload" />
-  </p2>
-  
-</div>
+    <div class="jumbotron">
+        <h4 class="display-3">CSV Reader and display on HTML</h4>
+        <p1><input type="file" id="fileUpload" /></p1>
+        <p2 class="lead"><input  class="btn btn-primary btn-sm" type="button" id="upload" value="Upload" />
+
+        </p2>
+
+    </div>
 
 
-<hr />
-<div id="dvCSV">
-</div>
+    <hr />
+    <div id="dvCSV">
+        <h3>Dependent:</h3><select id="depdd" style="display:none;width: 200px" />
+        <option selected="selected">
+            --select--
+        </option>
+        </select>
+    </div>
+
+    <div id="sdep">
+
+        <h3>Sdependent:</h3><select id="sdepdd"  style="display:none;width: 200px" />
+        <option selected="selected">
+            --select--
+        </option>
+        </select>
+    </div>
+
+    <div id="indep">
+
+        <h3>Independent:</h3>
+
+        <select id="indepdd"  multiple style="display:none;width: 200px;height:250px" >
+            <option selected="selected">
+                --select--
+            </option>
+        </select>
+
+    </div>
 
 
+    <div class="finalclass">
+        <p2 class="final"><input  class="btn btn-primary btn-sm" type="button" id="Submit" value="Submit" />
 
+        </p2>
+
+    </div>
 
 
     <!--<label class="btn btn-primary" for="my-file-selector">
       <input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">Upload a CSV file
     </label>
     <span class='label label-info' id="upload-file-info"></span>-->
-  </div>
+</div>
 </body>
 </html>
